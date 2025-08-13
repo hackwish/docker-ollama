@@ -1,6 +1,6 @@
 # Docker Ollama
 
-This repo contains base files to depoy Ollama Server.
+This repo contains base files to deploy Ollama Server and OpenWebUI.
 
 ## How-to
 - Clone the repo
