@@ -2,6 +2,10 @@ version: '3'
 services:
   ollama:
     container_name: ollama
+    environment:
+      SET_CONTAINER_TIMEZONE: 'true'
+      CONTAINER_TIMEZONE: America/Santiago
+      TZ: America/Santiago
     ports:
       - "11434:11434"
     restart: unless-stopped
@@ -12,6 +16,10 @@ services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
+    environment:
+      SET_CONTAINER_TIMEZONE: 'true'
+      CONTAINER_TIMEZONE: America/Santiago
+      TZ: America/Santiago
     ports:
       - "3000:8080"
     depends_on:
