@@ -3,6 +3,13 @@ services:
     image: ollama/ollama # ollama/ollama:rocm 
     volumes:
       - ./ollama:/root/.ollama
+  local-ai:
+    image: localai/localai:latest-gpu-hipblas
+    volumes:
+      - ./local-ai:/data 
+      - ./local-ai/config:/config
+      - ./local-ai/models:/models
+      - ./local-ai/configuration:/configuration
   open-webui:
     environment:
       OLLAMA_API_BASE_URL: http://ollama:11434/api
@@ -10,7 +17,7 @@ services:
       OPENAI_API_KEY: your_secret_key
     volumes:
       - ./open-webui:/app/backend/data
-
 volumes:
   ollama:
+  local-ai:
   open-webui:

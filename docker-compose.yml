@@ -13,6 +13,25 @@ services:
       - /dev/dri:/dev/dri
       - /dev/dma_heap:/dev/dma_heap
       - /dev/kfd:/dev/kfd 
+  local-ai:
+    container_name: local-ai
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      SET_CONTAINER_TIMEZONE: 'true'
+      CONTAINER_TIMEZONE: America/Santiago
+      TZ: America/Santiago
+      LOCALAI_MODELS_PATH: /models
+      LOCALAI_CONFIG_PATH: /config
+      LOCALAI_CONFIG_DIR: /configuration
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    group_add:
+      - video
+    stdin_open: true
+    tty: true
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
